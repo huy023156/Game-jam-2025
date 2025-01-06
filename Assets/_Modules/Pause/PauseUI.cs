@@ -10,7 +10,7 @@ public class PauseUI : MonoBehaviour {
 
     private bool isPaused;
 
-    private void Awake() {
+    private void Start() {
         pauseButton.onClick.AddListener(() => {
             if (isPaused) {
                 Resume();
@@ -19,8 +19,8 @@ public class PauseUI : MonoBehaviour {
             }
         });
 
-        homeButton.onClick.AddListener(() =>  Loader.Load(SceneName.MainMenuScene));
-        selectLevelButton.onClick.AddListener(() => Loader.Load(SceneName.SelectLevelScene));
+        homeButton.onClick.AddListener(() =>  Loader.Instance.LoadWithFade(SceneName.MainMenuScene));
+        selectLevelButton.onClick.AddListener(() => Loader.Instance.LoadWithFade(SceneName.SelectLevelScene));
         resumeButton.onClick.AddListener(() => {
             Resume();
         });
@@ -40,13 +40,13 @@ public class PauseUI : MonoBehaviour {
 
     private void Pause() {
         isPaused = true;
-        PauseController.Pause();
+        PauseController.Instance.Pause();
         pausePanel.SetActive(true);
     }
 
     private void Resume() {
         isPaused = false;
-        PauseController.Resume();
+        PauseController.Instance.Resume();
         pausePanel.SetActive(false);
     }
 }

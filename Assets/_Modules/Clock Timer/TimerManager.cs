@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TimerManager : Singleton<TimerManager> {
     [SerializeField] private float timerMax = 10f; 
-    [SerializeField] private float timer;
+    private float timer;
 
     private void Start() {
         timer = timerMax;

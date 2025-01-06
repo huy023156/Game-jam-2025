@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class DragController : MonoBehaviour 
 {
-    private const float DRAG_SPEED = 20f;
+    private const float DRAG_SPEED = 40f;
     private static int currentMaxSortingOrder = 0;
 
     private Vector3 screenPoint;

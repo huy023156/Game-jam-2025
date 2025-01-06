@@ -1,4 +1,6 @@
 public partial class EventDefine: IEventParam {
+    public struct OnLoadScene: IEventParam { }
+
     public struct OnGamePaused: IEventParam {
         public bool isPaused;
     }
