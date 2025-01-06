@@ -1,6 +1,8 @@
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
+    [SerializeField] private float levelTimeMax;
+
     private void Start() {
         //AudioManager.Instance.PlayMusic(GameAudioClip.BGM_PLAYING, -10f);
     }
