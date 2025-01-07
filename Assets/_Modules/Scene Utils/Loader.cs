@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Need to match the scene name in the build settings
 public enum SceneName
 {
     MainMenuScene,
@@ -18,19 +19,14 @@ public class Loader : Singleton<Loader>
         SceneManager.LoadSceneAsync(targetScene.ToString());
     }
 
-    public void LoadWithFade(SceneName targetScene) {
-        StartCoroutine(LoadWithFadeCoroutine(targetScene));
-    }
-
-    public IEnumerator LoadWithFadeCoroutine(SceneName targetScene)
-    {
+    public async void LoadWithFade(SceneName targetScene) {
         Transform fadeTransitionPrefab = Resources.Load<Transform>("pfFadeSceneTransition");
         FadeTransition fadeTransition = Instantiate(fadeTransitionPrefab).GetComponent<FadeTransition>();
         DontDestroyOnLoad(fadeTransition.gameObject);
 
-        yield return StartCoroutine(fadeTransition.FadeOut());
+        await fadeTransition.FadeOut();
         Load(targetScene);
-        yield return StartCoroutine(fadeTransition.FadeIn());
+        await fadeTransition.FadeIn();
         Destroy(fadeTransition.gameObject);
     }
 }

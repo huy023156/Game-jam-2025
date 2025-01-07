@@ -4,7 +4,7 @@ using System.Collections;
 using TMPro;
 
 public class TypeWriter : MonoBehaviour {
-        [Header("Dont touch me")]
+    [Header("Dont touch me")]
     public string currentText = "";
     public bool isFinishedTyping = false;
 

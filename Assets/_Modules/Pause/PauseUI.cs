@@ -8,6 +8,8 @@ public class PauseUI : MonoBehaviour {
     [SerializeField] private Button resumeButton;
     [SerializeField] private GameObject pausePanel;
 
+    private ConfirmDialogue confirmDialog;
+
     private bool isPaused;
 
     private void Start() {
@@ -19,8 +21,8 @@ public class PauseUI : MonoBehaviour {
             }
         });
 
-        homeButton.onClick.AddListener(() =>  Loader.Instance.LoadWithFade(SceneName.MainMenuScene));
-        selectLevelButton.onClick.AddListener(() => Loader.Instance.LoadWithFade(SceneName.SelectLevelScene));
+        homeButton.onClick.AddListener(OnHomeBtnClick);
+        selectLevelButton.onClick.AddListener(OnSelectLevelBtnClick);
         resumeButton.onClick.AddListener(() => {
             Resume();
         });
@@ -45,8 +47,31 @@ public class PauseUI : MonoBehaviour {
     }
 
     private void Resume() {
-        isPaused = false;
-        PauseController.Instance.Resume();
-        pausePanel.SetActive(false);
+        if (confirmDialog != null) {
+            confirmDialog.Hide();
+            return;
+        }
+
+        UtilClass.PlayTransformFadeOutAnimation(pausePanel.transform, pausePanel.GetComponent<CanvasGroup>(), () => {
+            isPaused = false;
+            PauseController.Instance.Resume();
+            pausePanel.SetActive(false);
+        });
+    }
+
+    private async void OnHomeBtnClick() {
+        confirmDialog = ConfirmDialogue.Create();
+        bool result = await confirmDialog.Show();
+        if(result) {
+            Loader.Instance.LoadWithFade(SceneName.MainMenuScene);
+        }
+    }
+
+    private async void OnSelectLevelBtnClick() {
+        confirmDialog = ConfirmDialogue.Create();
+        bool result = await confirmDialog.Show();
+        if(result) {
+            Loader.Instance.LoadWithFade(SceneName.SelectLevelScene);
+        }
     }
 }

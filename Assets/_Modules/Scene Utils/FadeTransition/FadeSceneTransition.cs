@@ -1,5 +1,7 @@
-using System.Collections;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System.Threading;
+using System;
 
 public class FadeTransition : MonoBehaviour {
     private Animator animator;
@@ -8,15 +10,15 @@ public class FadeTransition : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
 
-    public IEnumerator FadeIn() {
+    public async UniTask FadeIn() {
         animator.SetTrigger("fade_in");
         float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSecondsRealtime(animationLength);
+        await UniTask.Delay(TimeSpan.FromSeconds(animationLength), DelayType.UnscaledDeltaTime, PlayerLoopTiming.Update, new CancellationToken());
     }
 
-    public IEnumerator FadeOut() {
+    public async UniTask FadeOut() {
         animator.SetTrigger("fade_out");
         float animationLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSecondsRealtime(animationLength);
+        await UniTask.Delay(TimeSpan.FromSeconds(animationLength), DelayType.UnscaledDeltaTime, PlayerLoopTiming.Update, new CancellationToken());
     }
 }
