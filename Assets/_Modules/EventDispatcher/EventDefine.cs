@@ -1,6 +1,13 @@
+using UnityEngine;
+
 public partial class EventDefine: IEventParam {
 
     public struct OnLoadScene: IEventParam { }
+
+    public struct OnDestroyGameObjectt : IEventParam
+    {
+        public GameObject obj;
+    }
 
     public struct OnTutorialGame : IEventParam
     {

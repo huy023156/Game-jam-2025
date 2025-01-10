@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4896264708378060757}
   - component: {fileID: 4233213658038241860}
   m_Layer: 0
-  m_Name: Target
+  m_Name: TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,10 +132,9 @@ GameObject:
   - component: {fileID: 6618569719592067779}
   - component: {fileID: 7783216516504318888}
   - component: {fileID: 2948986269497278343}
-  - component: {fileID: 3477085976845262549}
   - component: {fileID: 5242953723474356154}
   m_Layer: 0
-  m_Name: Drag
+  m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,22 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d1a1999f647a74db8f0c607ee2618e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3477085976845262549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617271862966712806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86ae5658ebe03ef4bb5b0772092432d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stretchDuration: 0.5
-  shrinkDuration: 0.5
-  stretchScale: {x: 1, y: 2, z: 1}
-  isInteracted: 0
 --- !u!114 &5242953723474356154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +280,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aaf1a5030627914db6f81b123d7cf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stretchAndShrink: {fileID: 3477085976845262549}
 --- !u!1 &1924080911770204453
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2490342776395629189}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -409,7 +391,7 @@ GameObject:
   - component: {fileID: 2564422731672053468}
   - component: {fileID: 397805441932173959}
   m_Layer: 0
-  m_Name: Square
+  m_Name: bachground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

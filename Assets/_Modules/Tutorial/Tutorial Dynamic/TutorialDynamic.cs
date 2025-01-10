@@ -1,8 +1,9 @@
 ﻿using DG.Tweening;
+using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using static EventDefine;
 
 public class TutorialDynamic : MonoBehaviour
 {
@@ -36,10 +37,15 @@ public class TutorialDynamic : MonoBehaviour
             mouseCursor.transform.position = new Vector3(drag.transform.position.x, drag.transform.position.y, display);
         }
 
+        StartCoroutine(EndTutorial(1f));
+    }
+
+    private IEnumerator EndTutorial(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         TutorialDynamicController.Instance.EnableObjects();
 
         if (tutorialDynamicPanel != null && tutorialDynamicPanel.activeInHierarchy)
             tutorialDynamicPanel.SetActive(false);
     }
-
 }
