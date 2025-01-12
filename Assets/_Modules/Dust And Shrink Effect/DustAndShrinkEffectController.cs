@@ -42,10 +42,10 @@ public class DustAndShrinkEffectController : Singleton<DustAndShrinkEffectContro
         obj.SetActive(false);
     }
 
-    public async void StretchAndShrinkAnimation(GameObject obj, float stretchDuration, float shrinkDuration, Vector3 stretchScale)
+    public async void StretchAndShrinkAnimation(GameObject objSprite, float stretchDuration, float shrinkDuration, Vector3 stretchScale)
     {
-        GameObject animObj = GetObjectFromPool(obj, obj.transform.localScale, obj.transform.position);
-        
+        GameObject animObj = GetObjectFromPool(objSprite, objSprite.transform.localScale, objSprite.transform.position);
+       
         // Kéo giãn
         await animObj.transform.DOScale(stretchScale, stretchDuration).AsyncWaitForCompletion();
 

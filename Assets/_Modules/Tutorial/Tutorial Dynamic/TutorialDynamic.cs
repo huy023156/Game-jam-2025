@@ -27,7 +27,7 @@ public class TutorialDynamic : MonoBehaviour
         {
             mouseCursor.GetComponent<SpriteRenderer>().sortingOrder = drag.GetComponent<SpriteRenderer>().sortingOrder + 1;
 
-            await mouseCursor.transform.DOMove(target.transform.position, duration)
+            await mouseCursor.transform.DOMove(target.transform.position, duration).SetLoops(-1, LoopType.Restart)
                 .SetEase(Ease.InOutQuad) 
                 .AsyncWaitForCompletion(); 
 
