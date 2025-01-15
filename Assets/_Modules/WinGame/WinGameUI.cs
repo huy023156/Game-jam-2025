@@ -36,10 +36,10 @@ public class WinGameUI : MonoBehaviour
         bool result = await confirmDialog.Show();
         if (result)
         {
-            Loader.Instance.LoadWithFade(SceneName.GameScene);
+            Loader.Instance.LoadWithFade(SceneName.Level1);
         }
     }
-    
+        
     private async void OnHomeBtnClick()
     {
         confirmDialog = ConfirmDialogue.Create();
@@ -75,5 +75,24 @@ public class WinGameUI : MonoBehaviour
     private void OnWinGame(IEventParam param)
     {
         ShowWinPanel();
+    }
+    public int nextSceneLoad;
+    void start()
+    {
+        nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            // move to next level
+            SceneManager.LoadScene(nextSceneLoad);
+
+            //setting the next level to be unlocked
+            if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))
+            {
+                PlayerPrefs.SetInt("levelAt", nextSceneLoad);
+            }
+        }
     }
 }

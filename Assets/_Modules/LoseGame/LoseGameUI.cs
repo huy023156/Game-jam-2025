@@ -37,7 +37,7 @@ public class LoseGameUI : MonoBehaviour
         bool result = await confirmDialog.Show();
         if (result)
         {
-            Loader.Instance.LoadWithFade(SceneName.GameScene);
+            Loader.Instance.LoadWithFade(SceneName.Level1);
         }
     }
 
