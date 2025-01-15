@@ -14,7 +14,7 @@ public class TimerManager : Singleton<TimerManager> {
         if (timer <= 0) {
             timer = timerMax;
             Debug.Log("TIME UP!");
-            EventDispatcher.Dispatch(new EventDefine.OnLoseGame());
+            EventDispatcher.Dispatch(new EventDefine.OnWinGame());
         }
     } 
 
